@@ -1,0 +1,25 @@
+#------------------------------------------------------------------------------
+
+SOURCE=main.cpp
+MYPROGRAM=app
+
+MYLIBRARIES=-lopencv_core -lopencv_highgui -lopencv_video -lopencv_calib3d -laruco -lopencv_imgcodecs
+MYINCLUDES=-I /usr/local/include/opencv -I /usr/local/include/opencv2 -I /usr/local/include/aruco
+MYLIBPATH=-L /usr/local/lib/
+CC=g++
+
+#------------------------------------------------------------------------------
+
+
+
+all: $(MYPROGRAM)
+
+
+
+$(MYPROGRAM): $(SOURCE)
+
+	$(CC) $(SOURCE) -o$(MYPROGRAM) $(MYINCLUDES) $(MYLIBPATH) $(MYLIBRARIES)
+
+clean:
+
+	rm -f $(MYPROGRAM)
