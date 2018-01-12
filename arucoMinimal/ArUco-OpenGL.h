@@ -52,6 +52,11 @@ protected:
    
    // Test to read OpenGL framebuffer
    Mat               m_pixels;
+
+   // Frame counter
+   int cnt;
+   // Position de la taupe
+   int pos;
    
 // Methods
 public:

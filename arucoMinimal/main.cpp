@@ -150,6 +150,8 @@ void exitFunction() {
 // Main 
 int main(int argc, char * argv[])
 {
+   // Initialize random seed
+   srand(time(NULL));
    // OpenGL/GLUT Initialization
    glutInit(&argc, argv);
    

@@ -6,6 +6,7 @@
 //
 
 #include <iostream>
+#include <cstdlib> // for rand
 #include "ArUco-OpenGL.h"
 #include <opencv2/imgproc/imgproc.hpp>
 
@@ -16,6 +17,10 @@ ArUco::ArUco(string intrinFileName, float markerSize) {
    m_MarkerSize   = markerSize;
    // read camera parameters if passed
    m_CameraParams.readFromXMLFile(intrinFileName);
+   // Initialize frame counter
+   cnt = 0;
+   // Initialise position de la taupe
+   pos = 0;
 }
 
 // Destructor
@@ -102,11 +107,20 @@ void ArUco::drawScene() {
    //now, for each marker,
    double modelview_matrix[16];
    std::cout << "Number of markers: " << m_Markers.size() << std::endl;
+
+   if (cnt%20 == 0 && m_Markers.size() != 0) { // toutes les 60 frames on change de position
+      pos = rand() % m_Markers.size();
+      cout << pos << endl;
+   }
    
    // For each detected marker
-   for (unsigned int m=0;m<m_Markers.size();m++)
-   {
-      m_Markers[m].glGetModelViewMatrix(modelview_matrix);
+   // for (unsigned int m=0;m<m_Markers.size();m++)
+   // {
+   //    m_Markers[m].glGetModelViewMatrix(modelview_matrix);
+
+   // Affiche la taupe à la bonne position si possible
+   if (m_Markers.size()) {
+      m_Markers[pos].glGetModelViewMatrix(modelview_matrix);
       glMatrixMode(GL_MODELVIEW);
       glLoadIdentity();
       glLoadMatrixd(modelview_matrix);
@@ -156,6 +170,9 @@ void ArUco::drawScene() {
       
       glPopMatrix();
    }
+
+   // increment cnt
+   cnt++;
    
    // Disabling depth test
    glDisable(GL_DEPTH_TEST);
