@@ -15,13 +15,16 @@ using namespace std;
 
 int main( int argc, char** argv )
 {
+    Mat image;
+
+    // Load image from command line
+    /*
     if( argc != 2)
     {
      cout <<" Usage: app nom_de_l_image" << endl;
      return -1;
     }
 
-    Mat image;
     image = imread(argv[1], CV_LOAD_IMAGE_COLOR);
 
     if(!image.data )
@@ -29,27 +32,35 @@ int main( int argc, char** argv )
         cout <<  "Could not open or find the image" << std::endl ;
         return -1;
     }
+    */
 
-    namedWindow( "Affichage", WINDOW_AUTOSIZE );
-    //imshow( "Affichage", image );
+    namedWindow( "Affichage", CV_WINDOW_AUTOSIZE );
+
+    // Load image from camera
+    VideoCapture cap;
 
     // création d'un détecteur de marqueurs
     MarkerDetector myDetector;
     // liste de marqueurs : sera remplie par ArUco
     vector <Marker> markers ;
-    // detection
-    myDetector.detect(image, markers);
-    // on affiche les résultats de la détection sur une image
-    for (unsigned int i=0; i <markers.size(); i++) {
-        cout << markers[i];
-        markers[i].draw(image, Scalar(0, 0, 255), 2);
-    }
-    imshow("Affichage",image);
+    
+    
     int key=0;
     while ((key!=ESC_KEY_VM) && (key!=Q_KEY_VM)) {
+        cap.read(image);
+
+        // detection
+        myDetector.detect(image, markers);
+        // on affiche les résultats de la détection sur une image
+        for (unsigned int i=0; i <markers.size(); i++) {
+            cout << markers[i];
+            markers[i].draw(image, Scalar(0, 0, 255), 2);
+        }
+        imshow("Affichage",image);
         key = waitKey(1);
     }
     destroyAllWindows();
+    cap.release();
 
     return 0;
 }
