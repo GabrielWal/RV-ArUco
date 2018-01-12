@@ -15,7 +15,34 @@ La taille n'a pas d'impact sur la détection des marqueurs tant que ceux-ci rest
 ![Click here](docs/aruco.PNG)
 #### Explication de la méthode : ArUco::drawScene()
 - Placement dans le repère caméra
-- Pour chaque marqueur : 
-  - On trace les arrêtes d'un cube (le marqueur est centré sur la face infiérieur du cube)
+- Pour chaque marqueur :  On trace les arrêtes d'un cube (le marqueur est centré sur la face infiérieur du cube)
 #### Nouvelle augmentation
-`test code text`
+Pour cette nouvelle augmentation nous avons décidé de remplacer les cubes par des pyramides
+Ci-dessous le code remplaçant la déclaration des cubes:
+
+`glScalef(0.1f,0.1f,0.1f);
+      
+      glPushMatrix();
+      glBegin(GL_LINE_LOOP);
+         glVertex3f(0.5,-0.5,0.0);
+         glVertex3f(0.5,0.5,0.0);
+         glVertex3f(-0.5,0.5,0.0);
+         glVertex3f(-0.5,-0.5,0.0);
+      glEnd();
+      //draw the nose
+      glBegin(GL_LINES);
+
+         glVertex3f(0.5,-0.5,0.0);
+         glVertex3f(0.0,0.0,1);
+
+         glVertex3f(0.5,0.5,0.0);
+         glVertex3f(0.0,0.0,1);
+
+         glVertex3f(-0.5,0.5,0.0);
+         glVertex3f(0.0,0.0,1);
+
+         glVertex3f(-0.5,-0.5,0.0);
+         glVertex3f(0.0,0.0,1);
+      glEnd();
+ `
+ ![Pyramides](docs/pyramids.PNG)
