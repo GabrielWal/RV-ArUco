@@ -11,4 +11,11 @@ Le changement d'angle de vue n'a pas d'impact sur la détection des marqueurs ta
 La taille n'a pas d'impact sur la détection des marqueurs tant que ceux-ci restent suffisammment gros pour être distincts. Avec la feuille de test on va jusqu'à 1m50 avant que ArUco ne détecte plus les marqueurs.
 
 ### Première augmentation
+#### ArUco-OpenGL
 ![Click here](docs/aruco.PNG)
+#### Explication de la méthode : ArUco::drawScene()
+- Placement dans le repère caméra
+- Pour chaque marqueur : 
+  - On trace les arrêtes d'un cube (le marqueur est centré sur la face infiérieur du cube)
+#### Nouvelle augmentation
+`test code text`
