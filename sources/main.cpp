@@ -38,6 +38,14 @@ int main( int argc, char** argv )
 
     // Load image from camera
     VideoCapture cap;
+    int cam_number;
+    do{
+        // Opening a camera flow
+        cout << "Entrez un entier pour ouvrir la camera" << endl;
+        cin >> cam_number;
+        cap.open(cam_number);
+    } while(!cap.isOpened());
+    cout << "Camera opened!" << endl;
 
     // création d'un détecteur de marqueurs
     MarkerDetector myDetector;
@@ -47,7 +55,7 @@ int main( int argc, char** argv )
     
     int key=0;
     while ((key!=ESC_KEY_VM) && (key!=Q_KEY_VM)) {
-        cap.read(image);
+        cap >> image;
 
         // detection
         myDetector.detect(image, markers);
