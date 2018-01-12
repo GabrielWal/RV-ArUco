@@ -21,8 +21,14 @@
 #include <time.h>
 
 // OpenGL/GLUT
-#include <OPENGL/gl.h>
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
 #include <GLUT/glut.h>
+#else
+#include <GL/gl.h>
+#include <GL/glut.h>
+#include <GL/glext.h>
+#endif
 
 // OpenCV
 #include <opencv2/objdetect/objdetect.hpp>

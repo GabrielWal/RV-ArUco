@@ -7,8 +7,14 @@
 
 
 // OpenGL/GLUT
-#include <OPENGL/gl.h>
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
 #include <GLUT/glut.h>
+#else
+#include <GL/gl.h>
+#include <GL/glut.h>
+#include <GL/glext.h>
+#endif
 
 // Main include
 #include "main.h"

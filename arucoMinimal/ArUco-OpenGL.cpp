@@ -121,13 +121,33 @@ void ArUco::drawScene() {
       // Drawing axis
       drawAxis(m_MarkerSize);
       
-      // Drawing a cube
-      glColor3f(1,0.4f,0.4f);
-      //glTranslatef(0, m_MarkerSize/2,0);
-      glTranslatef(0, 0, m_MarkerSize/2);
+      // Drawing a pyramid
+      //glTranslatef(0, 0, m_MarkerSize/2);
+      glScalef(0.1f,0.1f,0.1f);
       
       glPushMatrix();
-      glutWireCube( m_MarkerSize );
+      glBegin(GL_LINE_LOOP);
+         glVertex3f(0.5,-0.5,0.0);
+         glVertex3f(0.5,0.5,0.0);
+         glVertex3f(-0.5,0.5,0.0);
+         glVertex3f(-0.5,-0.5,0.0);
+      glEnd();
+      //draw the nose
+      glBegin(GL_LINES);
+
+         glVertex3f(0.5,-0.5,0.0);
+         glVertex3f(0.0,0.0,1);
+
+         glVertex3f(0.5,0.5,0.0);
+         glVertex3f(0.0,0.0,1);
+
+         glVertex3f(-0.5,0.5,0.0);
+         glVertex3f(0.0,0.0,1);
+
+         glVertex3f(-0.5,-0.5,0.0);
+         glVertex3f(0.0,0.0,1);
+      glEnd();
+
       
       // Re-enabling light if it is on
       if(lightOn) {
