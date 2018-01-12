@@ -20,8 +20,8 @@ La taille n'a pas d'impact sur la détection des marqueurs tant que ceux-ci rest
 Pour cette nouvelle augmentation nous avons décidé de remplacer les cubes par des pyramides
 Ci-dessous le code remplaçant la déclaration des cubes:
 
-`glScalef(0.1f,0.1f,0.1f);
-      
+`
+glScalef(0.1f,0.1f,0.1f);   
       glPushMatrix();
       glBegin(GL_LINE_LOOP);
          glVertex3f(0.5,-0.5,0.0);
@@ -31,16 +31,12 @@ Ci-dessous le code remplaçant la déclaration des cubes:
       glEnd();
       //draw the nose
       glBegin(GL_LINES);
-
          glVertex3f(0.5,-0.5,0.0);
          glVertex3f(0.0,0.0,1);
-
          glVertex3f(0.5,0.5,0.0);
          glVertex3f(0.0,0.0,1);
-
          glVertex3f(-0.5,0.5,0.0);
          glVertex3f(0.0,0.0,1);
-
          glVertex3f(-0.5,-0.5,0.0);
          glVertex3f(0.0,0.0,1);
       glEnd();
