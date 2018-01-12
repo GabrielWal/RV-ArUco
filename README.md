@@ -11,4 +11,4 @@ Le changement d'angle de vue n'a pas d'impact sur la détection des marqueurs ta
 La taille n'a pas d'impact sur la détection des marqueurs tant que ceux-ci restent suffisammment gros pour être distincts. Avec la feuille de test on va jusqu'à 1m50 avant que ArUco ne détecte plus les marqueurs.
 
 ### Première augmentation
-![Image](./docs/aruco.PNG)
+![Click here](docs/aruco.PNG)
