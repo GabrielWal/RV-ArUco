@@ -42,3 +42,14 @@ Ci-dessous le code remplaçant la déclaration des cubes:
       glEnd();
 
  ![Pyramides](docs/pyramids.PNG)
+
+### Application de réalité augmentée
+#### Chasse-Taupe
+L'idée du jeu est de copier le jeu "Chasse-Taupe", pour cela on fait apparaître aléatoirement une pyramide sur un des marqueurs
+Pour tester le jeu, compiler et lancer [ArUcominimal](https://github.com/GabrielWal/RV-ArUco/tree/dev/arucoMinimal)
+
+Exemple: 
+![Chasse-Taupe](docs/taupe.PNG)
+
+#### Améliorations
+Une finalité du jeu serait de faire un compteur de point qui compterait à chaque fois que l'on fait disparaître une pyramide en mettant la main sur le marqueur
